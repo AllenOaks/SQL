@@ -1,0 +1,49 @@
+CREATE TABLE WuggysnuggyStore (id INTEGER PRIMARY KEY, name TEXT, genre TEXT, type TEXT, price INTEGER, quantity INTEGER);
+
+INSERT INTO WuggysnuggyStore VALUES (1, "Peach", "food", "acrylic pin", 10, 30);
+INSERT INTO WuggysnuggyStore VALUES (2, "Orange", "food", "acrylic pin", 10, 30);
+INSERT INTO WuggysnuggyStore VALUES (3, "Cherry", "food", "acrylic pin", 10, 30);
+INSERT INTO WuggysnuggyStore VALUES (4, "Banana", "food", "acrylic pin", 10, 30);
+INSERT INTO WuggysnuggyStore VALUES (5, "Strawberry", "food", "acrylic pin", 10, 30);
+INSERT INTO WuggysnuggyStore VALUES (6, "Avocado", "food", "acrylic pin", 10, 30);
+INSERT INTO WuggysnuggyStore VALUES (7, "Taro Boba", "food", "keychain", 15, 30);
+INSERT INTO WuggysnuggyStore VALUES (8, "Matcha Boba", "food", "keychain", 15, 30);
+INSERT INTO WuggysnuggyStore VALUES (9, "Lychee Boba", "food", "keychain", 15, 30);
+INSERT INTO WuggysnuggyStore VALUES (10, "20 dice", "dnd", "acrylic pin", 12, 25);
+INSERT INTO WuggysnuggyStore VALUES (11, "Dice Goblin", "dnd", "keychain", 15, 25);
+INSERT INTO WuggysnuggyStore VALUES (12, "Black Witch Hat", "witch", "acrylic pin", 10, 35);
+INSERT INTO WuggysnuggyStore VALUES (13, "White Witch Hat", "witch", "acrylic pin", 10, 35);
+INSERT INTO WuggysnuggyStore VALUES (14, "Witch Ghost", "witch", "keychain", 15, 35);
+INSERT INTO WuggysnuggyStore VALUES (15, "Phoenix", "fantasy", "acrylic pin", 12, 30);
+INSERT INTO WuggysnuggyStore VALUES (16, "Unicorn", "fantasy", "acrylic pin", 12, 25);
+INSERT INTO WuggysnuggyStore VALUES (17, "Lunar Moth", "fantasy", "keychain", 15, 20);
+INSERT INTO WuggysnuggyStore VALUES (18, "Tiny Peach", "food", "sticker", 5, 40);
+INSERT INTO WuggysnuggyStore VALUES (19, "Tiny Orange", "food", "sticker", 5, 40);
+INSERT INTO WuggysnuggyStore VALUES (20, "Tiny Cherry", "food", "sticker", 5, 40);
+INSERT INTO WuggysnuggyStore VALUES (21, "Tiny Banana", "food", "sticker", 5, 40);
+INSERT INTO WuggysnuggyStore VALUES (22, "Tiny Strawberry", "food", "sticker", 5, 40);
+INSERT INTO WuggysnuggyStore VALUES (23, "Tiny Avocado", "food", "sticker", 5, 40);
+
+
+--Display order by price
+SELECT * FROM WuggysnuggyStore
+ORDER BY genre DESC;
+
+
+--Avg price for each item type rounded up
+SELECT type, ROUND(AVG(price)) "price average" FROM WuggysnuggyStore
+GROUP BY type;
+
+
+--Inventory count by genre
+SELECT genre, type, COUNT(quantity) "inventory" FROM WuggysnuggyStore
+GROUP BY genre, type
+ORDER BY genre ASC;
+
+
+--Product count by genre
+SELECT genre, COUNT(genre) "product amount" FROM wuggysnuggyStore
+GROUP BY genre
+ORDER BY genre ASC;
+
+
