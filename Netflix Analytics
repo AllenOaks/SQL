@@ -1,0 +1,35 @@
+#In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data. 
+
+#List of movie/tv show titles in alphabetical order.
+SELECT title from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+ORDER BY title asc;
+
+#What are the directors and title names for the top 5 highest rated movies/tv shows?
+SELECT p.director, t.title, t.rating
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" as t
+JOIN "CharlotteChaze/BreakIntoTech"."netflix_people" as p
+ON t.show_id = p.show_id
+WHERE p.director IS NOT NULL
+OR t.rating IS NOT NULL
+ORDER BY t.rating DESC
+LIMIT 5;
+
+#How many movies are in the database that were made after 1980?
+SELECT COUNT(type) from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'
+AND release_year > 1980;
+
+#When was the most recent batch of movies/tv shows added to the database?
+SELECT  MAX(date(date_added)) FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+#What was the name of the director, rating, release year and description of the movie Bright Star?
+SELECT p.director, t.rating, t.release_year, t.description FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" t
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" p 
+ON t.show_id=p.show_id
+WHERE t.title='Bright Star';
+
+What is the top 2 oldest documentaries in the database and what year was it released?
+SELECT title, release_year, listed_in FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE listed_in = 'Documentaries'
+ORDER BY release_year ASC
+LIMIT 2;
